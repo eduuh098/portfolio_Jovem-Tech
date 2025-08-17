@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio - Eduuh</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Krona+One&family=Rationale&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Início</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#projetos" class="nav-link">Projetos</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#habilidades" class="nav-link">Habilidades</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contato" class="nav-link">Contato</a>
+                </li>
+            </ul>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="grid-overlay"></div>
+            <div class="particles"></div>
+        </div>
+
+        <div class="hero-content">
+            <div class="hero-main-content">
+                <div class="hero-text">
+                    <h1 class="hero-name">
+                        <span class="glitch-text">Olá, meu nome é Eduardo Souza da Costa</span>
+                    </h1>
+                    <h2 class="hero-title">
+                        <span class="typing-text">Desenvolvedor Full-Stack || GameDev</span>
+                    </h2>
+                    <p class="hero-passion">
+                        <i class="fas fa-code"></i>
+                        Sou um aspirante a Desenvolvedor Full-Stack e nas horas vagas sou um GameDev também. Eu amo criar experiências digitais únicas, unindo criatividade e código para transformar ideias em realidade. Curto criar sites e aplicativos com visual caprichado, mas sem deixar a performance de lado. Sempre explorando novas formas de melhorar e aprender, porque a tecnologia não para — e eu também não.
+                    </p>
+                    <div class="hero-buttons">
+                        <a href="#projetos" class="btn btn-primary">
+                            <i class="fas fa-rocket"></i>
+                            Ver Projetos
+                        </a>
+                        <a href="#contato" class="btn btn-secondary">
+                            <i class="fas fa-envelope"></i>
+                            Entre em Contato
+                        </a>
+                    </div>
+                </div>
+
+                <div class="sobre-image">
+                    <div class="image-frame">
+                        <img src="assets/perfil/eduuh.jpeg" alt="Foto de Eduardo Souza" class="profile-photo">
+                    </div>
+                </div>
+            </div>
+
+            <div class="sobre-stats">
+                <div class="stat-item">
+                    <span class="stat-number">1000+</span>
+                    <span class="stat-label">Horas Codando</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">10+</span>
+                    <span class="stat-label">Tecnologias</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">3+</span>
+                    <span class="stat-label">Projetos</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <section id="projetos" class="projetos">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="section-number"></span>
+                    Projetos
+                </h2>
+            </div>
+            <div class="projetos-grid">
+                <div class="projeto-card">
+                    <div class="projeto-image">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <div class="projeto-content">
+                        <h3 class="projeto-title">Jogo de Aventura Pixel</h3>
+                        <p class="projeto-description">
+                            Um jogo de plataforma 2D desenvolvido em Unity com controladores de personagem customizados, 
+                            sistema de progressão de níveis e design sonoro imersivo.
+                        </p>
+                        <div class="projeto-tech">
+                            <span class="tech-tag">Unity</span>
+                            <span class="tech-tag">C#</span>
+                            <span class="tech-tag">Game Design</span>
+                        </div>
+                        <div class="projeto-links">
+                            <a href="#" class="projeto-link">
+                                <i class="fab fa-github"></i>
+                                Código
+                            </a>
+                            <a href="#" class="projeto-link">
+                                <i class="fas fa-play"></i>
+                                Jogar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="projeto-card">
+                    <div class="projeto-image">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <div class="projeto-content">
+                        <h3 class="projeto-title">Sistema de Gerenciamento de Tarefas</h3>
+                        <p class="projeto-description">
+                            Uma aplicação full-stack para gerenciamento de tarefas em equipe com atualizações em tempo real, 
+                            funções de usuário e capacidades de rastreamento de projetos.
+                        </p>
+                        <div class="projeto-tech">
+                            <span class="tech-tag">C#</span>
+                            <span class="tech-tag">ASP.NET MVC</span>
+                            <span class="tech-tag">Entity Framework</span>
+                        </div>
+                        <div class="projeto-links">
+                            <a href="#" class="projeto-link">
+                                <i class="fab fa-github"></i>
+                                Código
+                            </a>
+                            <a href="#" class="projeto-link">
+                                <i class="fas fa-external-link-alt"></i>
+                                Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="projeto-card">
+                    <div class="projeto-image">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="projeto-content">
+                        <h3 class="projeto-title">Site Portfólio</h3>
+                        <p class="projeto-description">
+                            Um site de portfólio pessoal responsivo mostrando meus projetos e habilidades, 
+                            construído com tecnologias web modernas e design inspirado em cyberpunk.
+                        </p>
+                        <div class="projeto-tech">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                        <div class="projeto-links">
+                            <a href="#" class="projeto-link">
+                                <i class="fab fa-github"></i>
+                                Código
+                            </a>
+                            <a href="#" class="projeto-link">
+                                <i class="fas fa-external-link-alt"></i>
+                                Site
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="habilidades" class="habilidades">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    <span class="section-number"></span>
+                    Habilidades & Tecnologias
+                </h2>
+            </div>
+            <div class="habilidades-content">
+                <div class="habilidades-grid">
+                    <div class="skill-card">
+                        <div class="card-header">
+                            <i class="fas fa-paper-plane"></i>
+                        </div>
+                        <div class="card-body">
+                            <h4>Desenvolvimento Back-End</h4>
+                            <p>APIs, autenticação, MVC, bancos de dados e boas práticas.</p>
+                            <div class="tech-icons">
+                                <img src="assets/icons/backend/NET.png" alt=".NET Core">
+                                <img src="assets/icons/backend/Java.png" alt="Java">
+                                <img src="assets/icons/backend/MySQL.png" alt="MySQL">
+                                <img src="assets/icons/backend/Python.png" alt="Python">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="card-header">
+                            <i class="fas fa-circle"></i>
+                        </div>
+                        <div class="card-body">
+                            <h4>Desenvolvimento de Jogos</h4>
+                            <p>Gameplay, sistemas, cenas, input e build.</p>
+                            <div class="tech-icons">
+                                <img src="assets/icons/games/Unity.png" alt="Unity">
+                                <img src="assets/icons/backend/CSharp.png" alt="C#">
+                                <img src="assets/icons/games/Aseprite.png" alt="Aseprite">
+                                <img src="assets/icons/games/GameMaker.png" alt="GameMaker Studio">
+                                <img src="assets/icons/games/Itch.png" alt="Itch.io">
+                                <img src="assets/icons/games/Lua.png" alt=".Lua">
+                                <img src="assets/icons/games/Roblox.png" alt="Roblox Studio">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-card">
+                        <div class="card-header">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <div class="card-body">
+                            <h4>Desenvolvimento Front-End</h4>
+                            <p>HTML, CSS, JavaScript, frameworks, design responsivo e acessibilidade.</p>
+                            <div class="tech-icons">
+                                <img src="assets/icons/frontend/HTML5.png" alt="HTML5">
+                                <img src="assets/icons/frontend/CSS3.png" alt="CSS3">
+                                <img src="assets/icons/frontend/JavaScript.png" alt="JavaScript">
+                                <img src="assets/icons/frontend/React.png" alt="React">
+                                <img src="assets/icons/frontend/Vue.png" alt="Vue.js">
+                                <img src="assets/icons/frontend/Webpack.png" alt="Webpack">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato" class="contato">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">
+                    Entre em Contato
+                </h2>
+            </div>
+            <div class="contato-content">
+                <div class="contato-info">
+                    <h3 class="contato-title">
+                        Vamos nos Conectar?
+                    </h3>
+                    <p class="contato-description">
+                        Estou sempre aberto para discutir novas oportunidadees, colaborar em projetos, ou apenas conversar sobre tecnologias e desenvolvimento de jogos. Sinta-se à vontade para entrar em contato!
+                    </p>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/eduuh098" class="social-link" target="_blank">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/eduardo-souza-da-costa-401ba3291/" class="social-link" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </a>
+                    <a href="#" class="social-link" target="_blank">
+                        <i class="fas fa-envelope"></i>
+                        <span>Email</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>
