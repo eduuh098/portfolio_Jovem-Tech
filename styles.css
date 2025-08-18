@@ -168,7 +168,8 @@ body {
 
 /* Seção Início */
 .hero {
-    height: 100vh;
+    padding-top: 200px;
+    height: 650px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -186,6 +187,7 @@ body {
 }
 
 .grid-overlay {
+    height: 100vh;
     position: absolute;
     top: 0;
     left: 0;
@@ -229,18 +231,20 @@ body {
 }
 
 .hero-content {
+    height: 98vh;
     z-index: 2;
     max-width: 1200px;
-    padding: 0 20px;
+    padding: 0px 20px;
     margin: 0 auto;
 }
 
 .hero-main-content {
+    height: 592px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 50px;
-    margin-bottom: 50px;
+    margin-bottom: -100px;
 }
 
 .hero-text {
@@ -343,10 +347,8 @@ body {
 }
 
 .scroll-indicator {
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
+    gap: 40px;
+    margin-top: 40px;
     color: var(--neon-azul);
     font-size: 24px;
     animation: bounce 2s infinite;
@@ -368,7 +370,6 @@ body {
     display: flex;
     justify-content: center;
     gap: 40px;
-    margin-top: 40px;
 }
 
 .stat-item {
@@ -550,12 +551,12 @@ section {
     background: var(--preto);
 }
 
-.projetos-grid {
+.projetos-grid, .habilidades-grid {
     display: grid;
+    /* Manter a flexibilidade em telas maiores */
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 30px;
 }
-
 .projeto-card {
     background: linear-gradient(135deg, var(--cinza-escuro), var(--cinza-mais-escuro));
     border-radius: 10px;
