@@ -629,6 +629,7 @@ section {
     justify-content: center;
     gap: 15px;
     margin-top: auto;
+    z-index: 1000;
 }
 
 .tech-link {
@@ -639,7 +640,7 @@ section {
 .tech-icon {
     width: 60px;
     height: 60px;
-    background: var(--neon-azul);
+    background: var(--branco);
     color: var(--branco);
     border-radius: 8px;
     display: flex;
@@ -652,7 +653,7 @@ section {
 }
 
 .tech-link:hover .tech-icon {
-    background: var(--azul-primario);
+    background: var(--brilho-neon);
     transform: scale(1.1);
     box-shadow: 0 5px 15px rgba(0, 0, 250, 0.3);
 }
