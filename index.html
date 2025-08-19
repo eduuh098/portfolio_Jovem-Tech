@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio - Eduuh</title>
+    <title>Portfólio - Eduardo Souza da Costa</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Fontes do Google -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Krona+One&family=Rationale&display=swap" rel="stylesheet">
+    <!-- Font Awesome para ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <!-- NAVEGAÇÃO -->
     <nav class="navbar" id="navbar">
         <div class="nav-container">
             <ul class="nav-menu" id="nav-menu">
@@ -36,10 +37,11 @@
         </div>
     </nav>
 
+    <!-- SEÇÃO INÍCIO -->
     <section id="home" class="hero">
         <div class="hero-background">
             <div class="grid-overlay"></div>
-            <div class="particles"></div>
+            <div class="particles" id="particles"></div>
         </div>
 
         <div class="hero-content">
@@ -49,11 +51,15 @@
                         <span class="glitch-text">Olá, meu nome é Eduardo Souza da Costa</span>
                     </h1>
                     <h2 class="hero-title">
-                        <span class="typing-text">Desenvolvedor Full-Stack || GameDev</span>
+                        <span class="typing-text" id="typing-text">Desenvolvedor Full-Stack || GameDev</span>
                     </h2>
                     <p class="hero-passion">
                         <i class="fas fa-code"></i>
-                        Sou um aspirante a Desenvolvedor Full-Stack e nas horas vagas sou um GameDev também. Eu amo criar experiências digitais únicas, unindo criatividade e código para transformar ideias em realidade. Curto criar sites e aplicativos com visual caprichado, mas sem deixar a performance de lado. Sempre explorando novas formas de melhorar e aprender, porque a tecnologia não para — e eu também não.
+                        Sou um aspirante a Desenvolvedor Full-Stack e nas horas vagas sou um GameDev também. 
+                        Eu amo criar experiências digitais únicas, unindo criatividade e código para transformar 
+                        ideias em realidade. Curto criar sites e aplicativos com visual caprichado, mas sem deixar 
+                        a performance de lado. Sempre explorando novas formas de melhorar e aprender, porque a 
+                        tecnologia não para — e eu também não.
                     </p>
                     <div class="hero-buttons">
                         <a href="#projetos" class="btn btn-primary">
@@ -69,22 +75,25 @@
 
                 <div class="sobre-image">
                     <div class="image-frame">
-                        <img src="assets/perfil/eduuh.jpeg" alt="Foto de Eduardo Souza" class="profile-photo">
+                        <!-- Usando uma imagem do Pexels como placeholder -->
+                        <img src="assets/perfil/eduuh.jpeg" 
+                             alt="Foto de Eduardo Souza" 
+                             class="profile-photo">
                     </div>
                 </div>
             </div>
 
             <div class="sobre-stats">
                 <div class="stat-item">
-                    <span class="stat-number">1000+</span>
+                    <span class="stat-number" data-target="1000">0</span>
                     <span class="stat-label">Horas Codando</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number">10+</span>
+                    <span class="stat-number" data-target="10">0</span>
                     <span class="stat-label">Tecnologias</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number">3+</span>
+                    <span class="stat-number" data-target="3">0</span>
                     <span class="stat-label">Projetos</span>
                 </div>
             </div>
@@ -93,20 +102,16 @@
                 <i class="fas fa-chevron-down"></i>
             </div>
         </div>
-        
-        
     </section>
 
+    <!-- SEÇÃO PROJETOS -->
     <section id="projetos" class="projetos">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">
-                    <span class="section-number"></span>
-                    Projetos
-                </h2>
+                <h2 class="section-title">Projetos</h2>
             </div>
             <div class="projetos-grid">
-                <div class="projeto-card">
+                <div class="projeto-card fade-in">
                     <div class="projeto-image">
                         <i class="fas fa-gamepad"></i>
                     </div>
@@ -134,7 +139,7 @@
                     </div>
                 </div>
 
-                <div class="projeto-card">
+                <div class="projeto-card fade-in">
                     <div class="projeto-image">
                         <i class="fas fa-server"></i>
                     </div>
@@ -162,7 +167,7 @@
                     </div>
                 </div>
 
-                <div class="projeto-card">
+                <div class="projeto-card fade-in">
                     <div class="projeto-image">
                         <i class="fas fa-mobile-alt"></i>
                     </div>
@@ -193,66 +198,93 @@
         </div>
     </section>
 
+    <!-- SEÇÃO HABILIDADES -->
     <section id="habilidades" class="habilidades">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">
-                    <span class="section-number"></span>
-                    Habilidades & Tecnologias
-                </h2>
+                <h2 class="section-title">Habilidades & Tecnologias</h2>
             </div>
-            <div class="habilidades-content">
-                <div class="habilidades-grid">
-                    <div class="skill-card">
-                        <div class="card-header">
-                            <i class="fas fa-paper-plane"></i>
-                        </div>
-                        <div class="card-body">
-                            <h4>Desenvolvimento Back-End</h4>
-                            <p>APIs, autenticação, MVC, bancos de dados e boas práticas.</p>
-                            <div class="tech-icons">
-                                <img src="assets/icons/backend/NET.png" alt=".NET Core">
-                                <img src="assets/icons/backend/Java.png" alt="Java">
-                                <img src="assets/icons/backend/MySQL.png" alt="MySQL">
-                                <img src="assets/icons/backend/Python.png" alt="Python">
-                            </div>
+            <div class="habilidades-grid">
+                <div class="skill-card fade-in">
+                    <div class="card-header">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <div class="card-body">
+                        <h4>Desenvolvimento Back-End</h4>
+                        <p>APIs, autenticação, MVC, bancos de dados e boas práticas.</p>
+                        <div class="tech-icons">
+                            <a href="https://dotnet.microsoft.com/" target="_blank" class="tech-link" title="Visitar site oficial do .NET Core">
+                                <div class="tech-icon">.NET</div>
+                            </a>
+                            <a href="https://www.java.com/" target="_blank" class="tech-link" title="Visitar site oficial do Java">
+                                <div class="tech-icon">Java</div>
+                            </a>
+                            <a href="https://www.mysql.com/" target="_blank" class="tech-link" title="Visitar site oficial do MySQL">
+                                <div class="tech-icon">SQL</div>
+                            </a>
+                            <a href="https://www.python.org/" target="_blank" class="tech-link" title="Visitar site oficial do Python">
+                                <div class="tech-icon">Py</div>
+                            </a>
                         </div>
                     </div>
+                </div>
 
-                    <div class="skill-card">
-                        <div class="card-header">
-                            <i class="fas fa-circle"></i>
-                        </div>
-                        <div class="card-body">
-                            <h4>Desenvolvimento de Jogos</h4>
-                            <p>Gameplay, sistemas, cenas, input e build.</p>
-                            <div class="tech-icons">
-                                <img src="assets/icons/games/Unity.png" alt="Unity">
-                                <img src="assets/icons/backend/CSharp.png" alt="C#">
-                                <img src="assets/icons/games/Aseprite.png" alt="Aseprite">
-                                <img src="assets/icons/games/GameMaker.png" alt="GameMaker Studio">
-                                <img src="assets/icons/games/Itch.png" alt="Itch.io">
-                                <img src="assets/icons/games/Lua.png" alt=".Lua">
-                                <img src="assets/icons/games/Roblox.png" alt="Roblox Studio">
-                            </div>
+                <div class="skill-card fade-in">
+                    <div class="card-header">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <div class="card-body">
+                        <h4>Desenvolvimento de Jogos</h4>
+                        <p>Gameplay, sistemas, cenas, input e build.</p>
+                        <div class="tech-icons">
+                            <a href="https://unity.com/" target="_blank" class="tech-link" title="Visitar site oficial do Unity">
+                                <div class="tech-icon">Unity</div>
+                            </a>
+                            <a href="https://docs.microsoft.com/en-us/dotnet/csharp/" target="_blank" class="tech-link" title="Visitar documentação do C#">
+                                <div class="tech-icon">C#</div>
+                            </a>
+                            <a href="https://www.aseprite.org/" target="_blank" class="tech-link" title="Visitar site oficial do Aseprite">
+                                <div class="tech-icon">Asp</div>
+                            </a>
+                            <a href="https://www.yoyogames.com/gamemaker" target="_blank" class="tech-link" title="Visitar site oficial do GameMaker">
+                                <div class="tech-icon">GM</div>
+                            </a>
+                            <a href="https://itch.io/" target="_blank" class="tech-link" title="Visitar Itch.io">
+                                <div class="tech-icon">Itch</div>
+                            </a>
+                            <a href="https://www.lua.org/" target="_blank" class="tech-link" title="Visitar site oficial do Lua">
+                                <div class="tech-icon">Lua</div>
+                            </a>
                         </div>
                     </div>
+                </div>
 
-                    <div class="skill-card">
-                        <div class="card-header">
-                            <i class="fas fa-palette"></i>
-                        </div>
-                        <div class="card-body">
-                            <h4>Desenvolvimento Front-End</h4>
-                            <p>HTML, CSS, JavaScript, frameworks, design responsivo e acessibilidade.</p>
-                            <div class="tech-icons">
-                                <img src="assets/icons/frontend/HTML5.png" alt="HTML5">
-                                <img src="assets/icons/frontend/CSS3.png" alt="CSS3">
-                                <img src="assets/icons/frontend/JavaScript.png" alt="JavaScript">
-                                <img src="assets/icons/frontend/React.png" alt="React">
-                                <img src="assets/icons/frontend/Vue.png" alt="Vue.js">
-                                <img src="assets/icons/frontend/Webpack.png" alt="Webpack">
-                            </div>
+                <div class="skill-card fade-in">
+                    <div class="card-header">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <div class="card-body">
+                        <h4>Desenvolvimento Front-End</h4>
+                        <p>HTML, CSS, JavaScript, frameworks, design responsivo e acessibilidade.</p>
+                        <div class="tech-icons">
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank" class="tech-link" title="Visitar documentação do HTML5">
+                                <div class="tech-icon">HTML</div>
+                            </a>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank" class="tech-link" title="Visitar documentação do CSS3">
+                                <div class="tech-icon">CSS</div>
+                            </a>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" class="tech-link" title="Visitar documentação do JavaScript">
+                                <div class="tech-icon">JS</div>
+                            </a>
+                            <a href="https://reactjs.org/" target="_blank" class="tech-link" title="Visitar site oficial do React">
+                                <div class="tech-icon">React</div>
+                            </a>
+                            <a href="https://vuejs.org/" target="_blank" class="tech-link" title="Visitar site oficial do Vue.js">
+                                <div class="tech-icon">Vue</div>
+                            </a>
+                            <a href="https://webpack.js.org/" target="_blank" class="tech-link" title="Visitar site oficial do Webpack">
+                                <div class="tech-icon">Pack</div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -260,39 +292,65 @@
         </div>
     </section>
 
+    <!-- SEÇÃO CONTATO -->
     <section id="contato" class="contato">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">
-                    Entre em Contato
-                </h2>
+                <h2 class="section-title">Entre em Contato</h2>
             </div>
             <div class="contato-content">
                 <div class="contato-info">
-                    <h3 class="contato-title">
-                        Vamos nos Conectar?
-                    </h3>
+                    <h3 class="contato-title">Vamos nos Conectar?</h3>
                     <p class="contato-description">
-                        Estou sempre aberto para discutir novas oportunidadees, colaborar em projetos, ou apenas conversar sobre tecnologias e desenvolvimento de jogos. Sinta-se à vontade para entrar em contato!
+                        Estou sempre aberto para discutir novas oportunidades, colaborar em projetos, 
+                        ou apenas conversar sobre tecnologias e desenvolvimento de jogos. 
+                        Sinta-se à vontade para entrar em contato!
                     </p>
+                    <div class="social-links">
+                        <a href="https://github.com/eduuh098" class="social-link" target="_blank">
+                            <i class="fab fa-github"></i>
+                            <span>GitHub</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/eduardo-souza-da-costa-401ba3291/" class="social-link" target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                            <span>LinkedIn</span>
+                        </a>
+                        <a href="mailto:eduardo@exemplo.com" class="social-link">
+                            <i class="fas fa-envelope"></i>
+                            <span>Email</span>
+                        </a>
+                    </div>
                 </div>
-                <div class="social-links">
-                    <a href="https://github.com/eduuh098" class="social-link" target="_blank">
-                        <i class="fab fa-github"></i>
-                        <span>GitHub</span>
-                    </a>
-                    <a href="https://www.linkedin.com/in/eduardo-souza-da-costa-401ba3291/" class="social-link" target="_blank">
-                        <i class="fab fa-linkedin"></i>
-                        <span>LinkedIn</span>
-                    </a>
-                    <a href="#" class="social-link" target="_blank">
-                        <i class="fas fa-envelope"></i>
-                        <span>Email</span>
-                    </a>
-                </div>
+                
+                <form class="contato-form" id="contato-form">
+                    <div class="form-group">
+                        <label for="nome">Nome</label>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="assunto">Assunto</label>
+                        <input type="text" id="assunto" name="assunto" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mensagem">Mensagem</label>
+                        <textarea id="mensagem" name="mensagem" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="submit-btn">
+                        <i class="fas fa-paper-plane"></i>
+                        <span id="btn-text">Enviar Mensagem</span>
+                    </button>
+                </form>
             </div>
         </div>
     </section>
+
+    <!-- NOTIFICAÇÃO -->
+    <div id="notification" class="notification hidden"></div>
+
     <script src="script.js"></script>
 </body>
 </html>

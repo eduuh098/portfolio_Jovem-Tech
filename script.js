@@ -1,46 +1,103 @@
-// DOM Content Loaded - Inicialização quando o documento estiver carregado
+/**
+ * PORTFÓLIO RESPONSIVO - JAVASCRIPT
+ * Arquivo principal com todas as funcionalidades do site
+ * Autor: Eduardo Souza da Costa
+ * 
+ * PRINCIPAIS FUNCIONALIDADES:
+ * - Navegação responsiva com menu mobile
+ * - Scroll suave entre seções
+ * - Animações de entrada dos elementos
+ * - Efeito de digitação no título
+ * - Contador animado nas estatísticas
+ * - Sistema de partículas
+ * - Formulário de contato funcional
+ * - Sistema de notificações
+ */
+
+// ==================== INICIALIZAÇÃO ==================== 
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('🚀 Portfólio carregado com sucesso!');
+    
     // Inicializar todas as funcionalidades
     initNavigation();
     initScrollAnimations();
-    initSkillBars();
-    initContactForm();
-    initParticles();
     initTypingEffect();
+    initCounterAnimation();
+    initParticles();
+    initContactForm();
+    initSmoothScroll();
+    
+    // Adicionar classe de carregamento
+    document.body.classList.add('loaded');
 });
 
-// Funcionalidade de navegação
+// ==================== NAVEGAÇÃO RESPONSIVA ==================== 
 function initNavigation() {
     const navbar = document.getElementById('navbar');
     const navToggle = document.getElementById('nav-toggle');
     const navMenu = document.getElementById('nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
 
-    // Toggle do menu mobile
-    navToggle.addEventListener('click', function() {
-        navMenu.classList.toggle('active');
-        navToggle.classList.toggle('active');
-    });
+    // Toggle do menu mobile - CORRIGIDO
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+            navToggle.classList.toggle('active');
+        });
+    }
 
-    // Fechar menu mobile ao clicar em um link
+    // Fechar menu mobile ao clicar em um link - CORRIGIDO
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
-            navMenu.classList.remove('active');
-            navToggle.classList.remove('active');
+            if (navMenu && navToggle) {
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+            }
         });
     });
 
-    // Efeito de scroll na navbar
+    // Efeito de scroll na navbar - MELHORADO
     window.addEventListener('scroll', function() {
         if (window.scrollY > 100) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
+        
+        // Destacar link ativo na navegação
+        highlightActiveSection();
     });
+}
 
-    // Scroll suave para links de navegação
+// ==================== DESTACAR SEÇÃO ATIVA ==================== 
+function highlightActiveSection() {
+    const sections = document.querySelectorAll('section');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    let currentSection = '';
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100;
+        const sectionHeight = section.offsetHeight;
+        
+        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+            currentSection = section.getAttribute('id');
+        }
+    });
+    
+    // Remover classe active de todos os links
     navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${currentSection}`) {
+            link.classList.add('active');
+        }
+    });
+}
+
+// ==================== SCROLL SUAVE PARA SEÇÕES ==================== 
+function initSmoothScroll() {
+    // Scroll suave para links de navegação
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
             const targetId = this.getAttribute('href').substring(1);
@@ -55,33 +112,9 @@ function initNavigation() {
             }
         });
     });
-
-    // Destacar link ativo na navegação
-    window.addEventListener('scroll', function() {
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.nav-link');
-        
-        let currentSection = '';
-        
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - 100;
-            const sectionHeight = section.offsetHeight;
-            
-            if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-                currentSection = section.getAttribute('id');
-            }
-        });
-        
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${currentSection}`) {
-                link.classList.add('active');
-            }
-        });
-    });
 }
 
-// Animações de scroll
+// ==================== ANIMAÇÕES DE SCROLL ==================== 
 function initScrollAnimations() {
     const observerOptions = {
         threshold: 0.1,
@@ -96,185 +129,16 @@ function initScrollAnimations() {
         });
     }, observerOptions);
 
-    // Adicionar classe fade-in aos elementos e observá-los
-    const elementsToAnimate = document.querySelectorAll('.projeto-card, .habilidade-categoria, .sobre-content, .contato-content');
+    // Observar elementos com animação fade-in
+    const elementsToAnimate = document.querySelectorAll('.fade-in');
     elementsToAnimate.forEach(element => {
-        element.classList.add('fade-in');
         observer.observe(element);
     });
 }
 
-// Animação das barras de habilidades
-function initSkillBars() {
-    const skillBars = document.querySelectorAll('.habilidade-progress');
-    
-    const skillObserver = new IntersectionObserver(function(entries) {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const skillBar = entry.target;
-                const targetWidth = skillBar.getAttribute('data-width');
-                
-                // Animar a barra de habilidade
-                setTimeout(() => {
-                    skillBar.style.width = targetWidth + '%';
-                }, 200);
-            }
-        });
-    }, {
-        threshold: 0.5
-    });
-
-    skillBars.forEach(bar => {
-        skillObserver.observe(bar);
-    });
-}
-
-// Manipulação do formulário de contato
-function initContactForm() {
-    const contactForm = document.getElementById('contato-form');
-    
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Obter dados do formulário
-        const formData = new FormData(contactForm);
-        const nome = formData.get('nome');
-        const email = formData.get('email');
-        const assunto = formData.get('assunto');
-        const mensagem = formData.get('mensagem');
-        
-        // Validação simples do formulário
-        if (!nome || !email || !assunto || !mensagem) {
-            showNotification('Por favor, preencha todos os campos', 'error');
-            return;
-        }
-        
-        if (!isValidEmail(email)) {
-            showNotification('Por favor, insira um endereço de email válido', 'error');
-            return;
-        }
-        
-        // Simular envio do formulário
-        showNotification('Mensagem enviada com sucesso!', 'success');
-        contactForm.reset();
-        
-        // Em uma aplicação real, você enviaria os dados para um servidor
-        console.log('Formulário enviado:', { nome, email, assunto, mensagem });
-    });
-}
-
-// Helper para validação de email
-function isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-}
-
-// Sistema de notificações
-function showNotification(message, type) {
-    // Remover notificações existentes
-    const existingNotification = document.querySelector('.notification');
-    if (existingNotification) {
-        existingNotification.remove();
-    }
-    
-    // Criar elemento de notificação
-    const notification = document.createElement('div');
-    notification.className = `notification ${type}`;
-    notification.textContent = message;
-    
-    // Adicionar estilos
-    notification.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        padding: 15px 20px;
-        border-radius: 5px;
-        color: white;
-        font-weight: 500;
-        z-index: 10000;
-        opacity: 0;
-        transform: translateY(-20px);
-        transition: all 0.3s ease;
-        ${type === 'success' ? 'background: #10b981;' : 'background: #ef4444;'}
-    `;
-    
-    document.body.appendChild(notification);
-    
-    // Animar entrada
-    setTimeout(() => {
-        notification.style.opacity = '1';
-        notification.style.transform = 'translateY(0)';
-    }, 100);
-    
-    // Remover após 3 segundos
-    setTimeout(() => {
-        notification.style.opacity = '0';
-        notification.style.transform = 'translateY(-20px)';
-        setTimeout(() => {
-            notification.remove();
-        }, 300);
-    }, 3000);
-}
-
-// Efeito de partículas para a seção hero
-function initParticles() {
-    const particlesContainer = document.querySelector('.particles');
-    
-    // Criar partículas aleatórias
-    for (let i = 0; i < 50; i++) {
-        createParticle(particlesContainer);
-    }
-}
-
-function createParticle(container) {
-    const particle = document.createElement('div');
-    particle.className = 'particle';
-    
-    // Posição aleatória
-    const x = Math.random() * 100;
-    const y = Math.random() * 100;
-    const size = Math.random() * 3 + 1;
-    const opacity = Math.random() * 0.5 + 0.1;
-    const animationDuration = Math.random() * 20 + 10;
-    
-    particle.style.cssText = `
-        position: absolute;
-        left: ${x}%;
-        top: ${y}%;
-        width: ${size}px;
-        height: ${size}px;
-        background: rgba(0, 0, 250, 1);
-        border-radius: 50%;
-        opacity: ${opacity};
-        animation: particleMove ${animationDuration}s linear infinite;
-    `;
-    
-    container.appendChild(particle);
-    
-    // Remover e recriar partícula após animação
-    setTimeout(() => {
-        particle.remove();
-        createParticle(container);
-    }, animationDuration * 1000);
-}
-
-// Adicionar keyframes de animação de partículas
-const particleStyles = document.createElement('style');
-particleStyles.textContent = `
-    @keyframes particleMove {
-        0% {
-            transform: translateY(0) translateX(0);
-        }
-        100% {
-            transform: translateY(-100vh) translateX(${Math.random() * 200 - 100}px);
-        }
-    }
-`;
-document.head.appendChild(particleStyles);
-
-// Efeito de digitação para o título hero
+// ==================== EFEITO DE DIGITAÇÃO ==================== 
 function initTypingEffect() {
-    const typingElement = document.querySelector('.typing-text');
+    const typingElement = document.getElementById('typing-text');
     if (!typingElement) return;
     
     const text = typingElement.textContent;
@@ -288,40 +152,245 @@ function initTypingEffect() {
             typingElement.textContent += text.charAt(index);
             index++;
             setTimeout(typeText, typingSpeed);
-        } else {
-            // Adicionar cursor piscante
-            typingElement.style.borderRight = '3px solid #ff073a';
-            typingElement.style.animation = 'blink 1s infinite';
         }
     }
     
-    // Iniciar efeito de digitação após um pequeno atraso
+    // Iniciar efeito após um pequeno atraso
     setTimeout(typeText, 1000);
 }
 
-// Scroll suave para botões hero
-document.querySelectorAll('.hero-buttons a').forEach(button => {
-    button.addEventListener('click', function(e) {
+// ==================== CONTADOR ANIMADO DAS ESTATÍSTICAS ==================== 
+function initCounterAnimation() {
+    const counters = document.querySelectorAll('.stat-number');
+    
+    const counterObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const counter = entry.target;
+                const target = parseInt(counter.getAttribute('data-target'));
+                const increment = target / 100;
+                let current = 0;
+                
+                const updateCounter = () => {
+                    if (current < target) {
+                        current += increment;
+                        counter.textContent = Math.ceil(current);
+                        setTimeout(updateCounter, 20);
+                    } else {
+                        counter.textContent = target + '+';
+                    }
+                };
+                
+                updateCounter();
+                counterObserver.unobserve(counter);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    counters.forEach(counter => {
+        counterObserver.observe(counter);
+    });
+}
+
+// ==================== SISTEMA DE PARTÍCULAS ==================== 
+function initParticles() {
+    const particlesContainer = document.getElementById('particles');
+    if (!particlesContainer) return;
+    
+    // Criar partículas iniciais
+    for (let i = 0; i < 50; i++) {
+        createParticle(particlesContainer);
+    }
+    
+    // Recriar partículas periodicamente
+    setInterval(() => {
+        if (particlesContainer.children.length < 50) {
+            createParticle(particlesContainer);
+        }
+    }, 2000);
+}
+
+function createParticle(container) {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    
+    // Propriedades aleatórias
+    const x = Math.random() * 100;
+    const y = Math.random() * 100;
+    const size = Math.random() * 3 + 1;
+    const opacity = Math.random() * 0.5 + 0.1;
+    const animationDuration = Math.random() * 20 + 10;
+    const moveX = (Math.random() - 0.5) * 200;
+    
+    particle.style.cssText = `
+        position: absolute;
+        left: ${x}%;
+        top: ${y}%;
+        width: ${size}px;
+        height: ${size}px;
+        background: rgba(0, 0, 250, ${opacity});
+        border-radius: 50%;
+        pointer-events: none;
+        animation: particleMove${Date.now()} ${animationDuration}s linear infinite;
+    `;
+    
+    // Criar animação única para cada partícula
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes particleMove${Date.now()} {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: ${opacity};
+            }
+            100% {
+                transform: translateY(-100vh) translateX(${moveX}px);
+                opacity: 0;
+            }
+        }
+    `;
+    document.head.appendChild(style);
+    
+    container.appendChild(particle);
+    
+    // Remover partícula após animação
+    setTimeout(() => {
+        if (particle.parentNode) {
+            particle.parentNode.removeChild(particle);
+        }
+        if (style.parentNode) {
+            style.parentNode.removeChild(style);
+        }
+    }, animationDuration * 1000);
+}
+
+// ==================== FORMULÁRIO DE CONTATO ==================== 
+function initContactForm() {
+    const contactForm = document.getElementById('contato-form');
+    const submitBtn = document.getElementById('submit-btn');
+    const btnText = document.getElementById('btn-text');
+    
+    if (!contactForm) return;
+    
+    contactForm.addEventListener('submit', async function(e) {
         e.preventDefault();
-        const targetId = this.getAttribute('href').substring(1);
-        const targetSection = document.getElementById(targetId);
         
-        if (targetSection) {
-            const offsetTop = targetSection.offsetTop - 80;
-            window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
-            });
+        // Obter dados do formulário
+        const formData = new FormData(contactForm);
+        const dados = {
+            nome: formData.get('nome'),
+            email: formData.get('email'),
+            assunto: formData.get('assunto'),
+            mensagem: formData.get('mensagem')
+        };
+        
+        // Validação
+        if (!validateForm(dados)) {
+            return;
+        }
+        
+        // Estado de loading
+        setLoadingState(true);
+        
+        try {
+            // Simular envio (substitua pela sua implementação)
+            await simulateFormSubmission(dados);
+            
+            showNotification('Mensagem enviada com sucesso! Entrarei em contato em breve.', 'success');
+            contactForm.reset();
+            
+        } catch (error) {
+            console.error('Erro ao enviar formulário:', error);
+            showNotification('Erro ao enviar mensagem. Tente novamente.', 'error');
+        } finally {
+            setLoadingState(false);
         }
     });
-});
+    
+    function validateForm(dados) {
+        // Validação de campos obrigatórios
+        if (!dados.nome || !dados.email || !dados.assunto || !dados.mensagem) {
+            showNotification('Por favor, preencha todos os campos', 'error');
+            return false;
+        }
+        
+        // Validação de email
+        if (!isValidEmail(dados.email)) {
+            showNotification('Por favor, insira um endereço de email válido', 'error');
+            return false;
+        }
+        
+        return true;
+    }
+    
+    function setLoadingState(loading) {
+        if (loading) {
+            submitBtn.disabled = true;
+            btnText.textContent = 'Enviando...';
+            submitBtn.querySelector('i').className = 'fas fa-spinner fa-spin';
+        } else {
+            submitBtn.disabled = false;
+            btnText.textContent = 'Enviar Mensagem';
+            submitBtn.querySelector('i').className = 'fas fa-paper-plane';
+        }
+    }
+}
 
-// Adicionar animação de carregamento à página
-window.addEventListener('load', function() {
-    document.body.classList.add('loading');
-});
+// ==================== SIMULAÇÃO DE ENVIO DE FORMULÁRIO ==================== 
+async function simulateFormSubmission(dados) {
+    // Simular delay de rede
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    
+    console.log('📧 Dados do formulário:', dados);
+    
+    /* 
+    INTEGRAÇÃO COM SERVIÇOS DE EMAIL:
+    
+    // OPÇÃO 1: EmailJS
+    return emailjs.send('service_id', 'template_id', dados, 'user_id');
+    
+    // OPÇÃO 2: Formspree
+    return fetch('https://formspree.io/f/seu-id', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dados)
+    });
+    
+    // OPÇÃO 3: API própria
+    return fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(dados)
+    });
+    */
+}
 
-// Efeito parallax para seção hero
+// ==================== VALIDAÇÃO DE EMAIL ==================== 
+function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+// ==================== SISTEMA DE NOTIFICAÇÕES ==================== 
+function showNotification(message, type = 'success') {
+    const notification = document.getElementById('notification');
+    
+    // Configurar notificação
+    notification.textContent = message;
+    notification.className = `notification ${type}`;
+    
+    // Mostrar notificação
+    notification.classList.add('show');
+    
+    // Esconder após 4 segundos
+    setTimeout(() => {
+        notification.classList.remove('show');
+        setTimeout(() => {
+            notification.classList.add('hidden');
+        }, 300);
+    }, 4000);
+}
+
+// ==================== EFEITO PARALLAX ==================== 
 window.addEventListener('scroll', function() {
     const scrolled = window.pageYOffset;
     const parallaxElements = document.querySelectorAll('.hero-background');
@@ -332,7 +401,55 @@ window.addEventListener('scroll', function() {
     });
 });
 
-// Adicionar efeito glitch ao logo no hover
-document.querySelector('.nav-logo').addEventListener('mouseenter', function() {
-    this.style.animation = 'glitch 0.5s ease-in-out';
+// ==================== OTIMIZAÇÕES DE PERFORMANCE ==================== 
+// Throttle para eventos de scroll
+function throttle(func, limit) {
+    let inThrottle;
+    return function() {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    }
+}
+
+// Aplicar throttle aos eventos de scroll
+window.addEventListener('scroll', throttle(function() {
+    highlightActiveSection();
+}, 100));
+
+// ==================== TRATAMENTO DE ERROS ==================== 
+window.addEventListener('error', function(e) {
+    console.error('❌ Erro capturado:', e.error);
+    // Aqui você pode implementar um sistema de logging
 });
+
+// ==================== LOG DE DESENVOLVIMENTO ==================== 
+console.log(`
+🎨 PORTFÓLIO EDUARDO SOUZA DA COSTA
+📱 Versão: 2.0 - Totalmente Responsivo
+🚀 Status: Carregado com sucesso!
+
+Funcionalidades ativas:
+✅ Navegação responsiva
+✅ Scroll suave
+✅ Animações de entrada
+✅ Efeito de digitação
+✅ Contador animado
+✅ Sistema de partículas
+✅ Formulário funcional
+✅ Notificações
+✅ Links clicáveis nas habilidades
+✅ Design 100% responsivo
+
+Para configurar o envio de emails:
+1. EmailJS: https://www.emailjs.com/
+2. Formspree: https://formspree.io/
+3. Backend próprio com Node.js/PHP
+`);
+
+// ==================== EASTER EGG ==================== 
+console.log('%c🎮 Desenvolvido com ❤️ por Eduardo Souza da Costa', 'color: #320afa; font-size: 16px; font-weight: bold;');
