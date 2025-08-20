@@ -270,6 +270,10 @@ function initContactForm() {
     const btnText = document.getElementById('btn-text');
     
     if (!contactForm) return;
+
+    // Inicializa o EmailJS com a sua Chave Pública (User ID)
+    // Substitua 'YOUR_PUBLIC_KEY' pela sua chave de verdade do EmailJS
+    emailjs.init('RthTh7Hp0lVw44qNa');
     
     contactForm.addEventListener('submit', async function(e) {
         e.preventDefault();
@@ -277,10 +281,10 @@ function initContactForm() {
         // Obter dados do formulário
         const formData = new FormData(contactForm);
         const dados = {
-            nome: formData.get('nome'),
-            email: formData.get('email'),
-            assunto: formData.get('assunto'),
-            mensagem: formData.get('mensagem')
+            from_name: formData.get('nome'),
+            from_email: formData.get('email'),
+            subject: formData.get('assunto'),
+            message: formData.get('mensagem')
         };
         
         // Validação
@@ -292,11 +296,14 @@ function initContactForm() {
         setLoadingState(true);
         
         try {
-            // Simular envio (substitua pela sua implementação)
-            await simulateFormSubmission(dados);
+            // Substitua os IDs do serviço e do template pelos seus
+            const serviceID = 'service_jtl2q6r'; 
+            const templateID = 'template_4nczcru';
+
+            await emailjs.send(serviceID, templateID, dados);
             
             showNotification('Mensagem enviada com sucesso! Entrarei em contato em breve.', 'success');
-            contactForm.reset();
+            contactForm.reset();         
             
         } catch (error) {
             console.error('Erro ao enviar formulário:', error);
@@ -308,13 +315,13 @@ function initContactForm() {
     
     function validateForm(dados) {
         // Validação de campos obrigatórios
-        if (!dados.nome || !dados.email || !dados.assunto || !dados.mensagem) {
+        if (!dados.from_name || !dados.from_email || !dados.subject || !dados.message) {
             showNotification('Por favor, preencha todos os campos', 'error');
             return false;
         }
         
         // Validação de email
-        if (!isValidEmail(dados.email)) {
+        if (!isValidEmail(dados.from_email)) {
             showNotification('Por favor, insira um endereço de email válido', 'error');
             return false;
         }
@@ -430,7 +437,7 @@ window.addEventListener('error', function(e) {
 // ==================== LOG DE DESENVOLVIMENTO ==================== 
 console.log(`
 🎨 PORTFÓLIO EDUARDO SOUZA DA COSTA
-📱 Versão: 2.0 - Totalmente Responsivo
+📱 Versão: 2.0
 🚀 Status: Carregado com sucesso!
 
 Funcionalidades ativas:
@@ -452,4 +459,4 @@ Para configurar o envio de emails:
 `);
 
 // ==================== EASTER EGG ==================== 
-console.log('%c🎮 Desenvolvido com ❤️ por Eduardo Souza da Costa', 'color: #320afa; font-size: 16px; font-weight: bold;');
+console.log('%c🎮 Desenvolvido por Eduardo Souza da Costa', 'color: #320afa; font-size: 16px; font-weight: bold;');
