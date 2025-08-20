@@ -602,6 +602,7 @@ section {
     display: flex;
     gap: 15px;
     margin-top: auto;
+    z-index: 1000;
 }
 
 .projeto-link {
