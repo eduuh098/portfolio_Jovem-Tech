@@ -281,11 +281,14 @@ function initContactForm() {
         // Obter dados do formulário
         const formData = new FormData(contactForm);
         const dados = {
-            from_name: formData.get('nome'),
-            from_email: formData.get('email'),
-            subject: formData.get('assunto'),
+            name: formData.get('nome'),
+            email: formData.get('email'),
+            title: formData.get('assunto'),
             message: formData.get('mensagem')
         };
+
+        // LINHA QUE VOCÊ DEVE ADICIONAR
+        console.log('Dados do formulário sendo enviados:', dados);
         
         // Validação
         if (!validateForm(dados)) {
@@ -298,7 +301,7 @@ function initContactForm() {
         try {
             // Substitua os IDs do serviço e do template pelos seus
             const serviceID = 'service_jtl2q6r'; 
-            const templateID = 'template_4nczcru';
+            const templateID = 'template_98i4ooc';
 
             await emailjs.send(serviceID, templateID, dados);
             
@@ -315,13 +318,13 @@ function initContactForm() {
     
     function validateForm(dados) {
         // Validação de campos obrigatórios
-        if (!dados.from_name || !dados.from_email || !dados.subject || !dados.message) {
+        if (!dados.name || !dados.email || !dados.title || !dados.message) {
             showNotification('Por favor, preencha todos os campos', 'error');
             return false;
         }
         
         // Validação de email
-        if (!isValidEmail(dados.from_email)) {
+        if (!isValidEmail(dados.email)) {
             showNotification('Por favor, insira um endereço de email válido', 'error');
             return false;
         }
